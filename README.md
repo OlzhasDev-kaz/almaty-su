@@ -47,6 +47,7 @@ npm run pack
 
 - **Netlify:** репозиторий подключается как есть; в `netlify.toml` уже указано `publish = "web"`.
 - **Vercel:** в настройках проекта укажите **Root Directory** = `web` (там лежит `vercel.json`).
+- **GitHub Pages:** в репозитории есть workflow `.github/workflows/deploy-pages.yml`, который публикует папку `web/` через GitHub Actions.
 - **FTP:** залейте **содержимое** папки `web/` в `public_html` (или используйте `npm run pack`).
 
 ## Прочее
