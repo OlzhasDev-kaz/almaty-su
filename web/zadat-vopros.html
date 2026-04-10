@@ -14,20 +14,21 @@
   <main id="main" class="page-main">
     <div class="layout-container">
 <nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol><li><a href="index.html">Главная</a></li><li><a href="press-sluzhba.html">Пресс-служба</a></li><li><span aria-current="page">Задать вопрос</span></li></ol></nav><header class="page-intro"><h1>Задать вопрос</h1><p class="lead">Официальная информация ГКП «Алматы Су» для потребителей и партнёров.</p></header><div class="prose prose--form">
-<p class="lead-text">Напишите нам — ответ придёт на указанный e-mail или по телефону. Ниже представлен макет формы; при подключении к CMS поля связываются с сервером.</p>
-<form class="feedback-form" action="#" method="post">
+<p class="lead-text">Напишите нам — ответ придёт на указанный e-mail или по телефону.</p>
+<form class="feedback-form" data-form-type="question" action="#" method="post">
   <div class="form-grid">
     <div class="field"><label for="q-name">ФИО</label><input id="q-name" name="name" type="text" autocomplete="name" required /></div>
     <div class="field"><label for="q-phone">Телефон</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" /></div>
     <div class="field field--wide"><label for="q-email">E-mail</label><input id="q-email" name="email" type="email" autocomplete="email" required /></div>
     <div class="field field--wide"><label for="q-msg">Вопрос</label><textarea id="q-msg" name="message" rows="5" required placeholder="Кратко опишите суть обращения"></textarea></div>
+    <div class="field field--hp" aria-hidden="true">
+      <label for="q-hp">Не заполняйте</label>
+      <input id="q-hp" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
   </div>
   <div class="form-actions"><button type="submit" class="btn-primary">Отправить</button><p class="form-hint">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в рамках обращения.</p></div>
+  <div class="form-feedback" role="status" aria-live="polite" hidden></div>
 </form></div>
-        <p class="official-page-cta">
-          Аналог на WordPress-сайте:
-          <a href="#" rel="noopener noreferrer">almatysu.kz — Задать вопрос</a>.
-        </p>
     </div>
   </main>
 

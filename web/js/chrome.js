@@ -52,7 +52,7 @@
     return (
       '<div class="nav-extras">' +
       '<div class="nav-search-slot">' +
-      '<form class="search-form search-form--nav" role="search" action="#" method="get">' +
+      '<form class="search-form search-form--nav" role="search" action="search.html" method="get">' +
       '<label class="visually-hidden" for="site-search">Поиск</label>' +
       '<input id="site-search" type="search" name="s" placeholder="Поиск..." autocomplete="off" />' +
       '<button type="submit" aria-label="Искать">' +
@@ -131,7 +131,7 @@
       "<p><strong>Call-центр:</strong> +7 727 3 777 444</p>" +
       "<p><strong>Аварийная диспетчерская:</strong> +7 727 274-66-66</p>" +
       "</div></div>" +
-      '<p class="site-footer__copy">© ГКП «АЛМАТЫ СУ», 2006-2021</p></footer>' +
+      '<p class="site-footer__copy">© ГКП «АЛМАТЫ СУ», 2006-2026</p></footer>' +
       '<button type="button" class="back-to-top" aria-label="Наверх">' +
       '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
       '<path d="M12 19V5M5 12l7-7 7 7" /></svg></button>'

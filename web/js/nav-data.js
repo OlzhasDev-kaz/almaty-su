@@ -157,4 +157,66 @@
     });
     return out;
   };
+
+  /**
+   * Страницы вне дерева nav (добавляются в полнотекстовый поиск).
+   * title / href обязательны; keywords — дополнительные слова для совпадений.
+   */
+  w.ALMATY_SU_searchExtras = [
+    {
+      title: "Личный кабинет",
+      href: "lichnyy-kabinet.html",
+      keywords: "электронный сервис потребитель показания начисления",
+    },
+  ];
+
+  /**
+   * Индекс для клиентского поиска: заголовок, URL и строка для сопоставления
+   * (название, «крошки», ключевые слова).
+   */
+  w.ALMATY_SU_getSearchIndex = function () {
+    var out = [];
+    var seen = {};
+
+    function add(title, href, haystack, breadcrumbs) {
+      if (!href || seen[href]) return;
+      seen[href] = true;
+      out.push({
+        title: title,
+        href: href,
+        haystack: String(haystack || "").toLowerCase(),
+        breadcrumbs: breadcrumbs || "",
+      });
+    }
+
+    add(
+      "Главная",
+      "index.html",
+      "главная страница сайт алматы су водоснабжение канализация новости сервисы",
+      ""
+    );
+
+    walkNav(w.ALMATY_SU.nav, function (item) {
+      if (!item.href || item.id === "home") return;
+      var trail = w.ALMATY_SU_findTrail(item.id);
+      var crumb = trail
+        .map(function (t) {
+          return t.label;
+        })
+        .join(" ");
+      var trailUi = trail
+        .map(function (t) {
+          return t.label;
+        })
+        .join(" › ");
+      var hay = item.label + " " + crumb + " " + (item.searchKeywords || "");
+      add(item.label, item.href, hay, trailUi);
+    });
+
+    (w.ALMATY_SU_searchExtras || []).forEach(function (x) {
+      add(x.title, x.href, x.title + " " + (x.keywords || ""), x.breadcrumbs || "Дополнительно");
+    });
+
+    return out;
+  };
 })(window);

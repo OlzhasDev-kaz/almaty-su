@@ -39,12 +39,12 @@
             Для срочного реагирования звоните в круглосуточную аварийную диспетчерскую
             <a href="tel:+77272746666"><strong>274-66-66</strong></a> (код 727) или на телефон доверия
             <a href="tel:+77021002765"><strong>8&nbsp;702&nbsp;100&nbsp;2765</strong></a>. Форма ниже — макет для интеграции с
-            сервером; до подключения CMS удобнее звонок.
+            сервером; при сбое отправки удобнее позвонить.
           </p>
         </div>
 
         <div class="prose prose--form">
-          <form class="feedback-form" action="#" method="post">
+          <form class="feedback-form" data-form-type="lyuk" action="#" method="post">
             <div class="form-grid">
               <div class="field">
                 <label for="lyuk-name">Ваше имя (обязательно)</label>
@@ -68,6 +68,10 @@
                   placeholder="Адрес, ориентир, что именно обнаружено"
                 ></textarea>
               </div>
+              <div class="field field--hp" aria-hidden="true">
+                <label for="lyuk-hp">Не заполняйте</label>
+                <input id="lyuk-hp" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
             </div>
             <div class="form-actions">
               <button type="submit" class="btn-primary">Отправить</button>
@@ -75,6 +79,7 @@
                 Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в рамках обращения.
               </p>
             </div>
+            <div class="form-feedback" role="status" aria-live="polite" hidden></div>
           </form>
         </div>
 

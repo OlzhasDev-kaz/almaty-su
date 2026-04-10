@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Поиск по сайту ГКП «Алматы Су»: разделы, услуги, контакты и материалы."
+    />
+    <title>Поиск по сайту — ГКП «Алматы Су»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/a11y-vis.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body data-active-nav="search">
+    <main id="main" class="page-main">
+      <div class="layout-container">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+          <ol>
+            <li><a href="index.html">Главная</a></li>
+            <li><span aria-current="page">Поиск</span></li>
+          </ol>
+        </nav>
+
+        <header class="page-intro">
+          <h1>Поиск по сайту</h1>
+          <p class="lead">Найдите разделы и страницы по ключевым словам.</p>
+        </header>
+
+        <div
+          id="search-results"
+          class="search-results"
+          role="region"
+          aria-label="Результаты поиска"
+          data-search-page="1"
+        ></div>
+      </div>
+    </main>
+
+    <script src="js/nav-data.js"></script>
+    <script src="js/chrome.js"></script>
+    <script src="js/a11y-mode.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

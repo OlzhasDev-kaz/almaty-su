@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx --yes serve web -l 3330",
+    "server": "node server/index.mjs",
     "start": "npm run dev",
     "scaffold": "node tools/scaffold.mjs",
     "render:meters": "node tools/render-meters-page.mjs",
@@ -13,5 +14,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }

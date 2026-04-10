@@ -604,16 +604,14 @@ html.is-a11y-vis .section-card-link:hover {
 
 /* Инфоблоки и полосы */
 html.is-a11y-vis .info-callout,
-html.is-a11y-vis .phones-strip,
-html.is-a11y-vis .official-page-cta {
+html.is-a11y-vis .phones-strip {
   background: #fff !important;
   border: 2px solid #000 !important;
   box-shadow: none !important;
 }
 
 html.is-a11y-vis .info-callout strong,
-html.is-a11y-vis .phones-strip strong,
-html.is-a11y-vis .official-page-cta {
+html.is-a11y-vis .phones-strip strong {
   color: #121212 !important;
 }
 
