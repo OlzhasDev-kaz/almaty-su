@@ -15,7 +15,8 @@ main.page-main {
 .layout-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem max(1.35rem, env(safe-area-inset-left, 0px)) 4rem max(1.35rem, env(safe-area-inset-right, 0px));
+  padding: calc(var(--rhythm, 1.5rem) * 2) max(1.35rem, env(safe-area-inset-left, 0px)) calc(var(--rhythm, 1.5rem) * 3)
+    max(1.35rem, env(safe-area-inset-right, 0px));
 }
 
 /* «Крошки» */

@@ -241,13 +241,14 @@
 
     var index = 0;
     var timer = null;
-    var AUTO_ADVANCE_MS = 15000;
+    /** Страховка, если ролик не шлёт «ended» (ошибка декодера и т.п.) — не мешает длинным видео */
+    var FALLBACK_ADVANCE_MS = 180000;
 
     function queueFallbackAdvance() {
       stop();
       timer = window.setTimeout(function () {
         render(index + 1);
-      }, AUTO_ADVANCE_MS);
+      }, FALLBACK_ADVANCE_MS);
     }
 
     function syncHeroVideos() {
@@ -260,7 +261,9 @@
             v.currentTime = 0;
           } catch (e) {}
           v.play().catch(function () {});
+          var slideIdx = n;
           v.onended = function () {
+            if (index !== slideIdx) return;
             render(index + 1);
           };
         } else {

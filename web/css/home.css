@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
 
 /*
  * ГКП «Алматы Су» — дизайн «civic utility»: доверие, читаемость, контраст.
- * Вдохновлено принципами госсервисов: плоские поверхности, явная иерархия,
- * сдержанная палитра (глубокий синевато-бирюзовый + цвет «вода»), без «стекла».
+ * Палитра: глубокий синевато-бирюзовый + акцент «вода», шрифт Montserrat.
  */
 
 :root {
   color-scheme: light;
   --bg-page: #eef2f5;
+  --bg-soft-gray: #eef2f5;
   --bg-surface: #ffffff;
   --bg-surface-glass: #ffffff;
+  --bg-warm-gray: #f7f8fa;
   --primary: #124559;
   --primary-hover: #0e3949;
   --accent: #0d7c7a;
@@ -34,7 +35,8 @@
   --nav-gradient: var(--nav-bg);
   --focus-ring: 2px solid var(--accent);
   --max-width: 1180px;
-  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --rhythm: 1.5rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
 }
@@ -59,7 +61,7 @@ body {
   margin: 0;
   font-family: var(--font);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text);
   background-color: var(--bg-page);
   background-image: none;
@@ -677,7 +679,7 @@ body[data-active-nav="home"] .nav-wrap {
 .nav-brand__mark {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.95);
   display: inline-flex;
   align-items: center;
@@ -943,7 +945,8 @@ body[data-active-nav="home"] .nav-wrap {
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem max(1.25rem, env(safe-area-inset-left, 0px)) 3rem max(1.25rem, env(safe-area-inset-right, 0px));
+  padding: calc(var(--rhythm) * 2) max(1.25rem, env(safe-area-inset-left, 0px)) calc(var(--rhythm) * 3)
+    max(1.25rem, env(safe-area-inset-right, 0px));
 }
 
 body[data-active-nav="home"] main {
@@ -1140,12 +1143,20 @@ body[data-active-nav="home"] main {
   font-size: 0.9rem;
   color: var(--text-muted);
   flex: 1;
+  max-width: 65ch;
 }
 
 .content-card .read-more {
   font-weight: 600;
   font-size: 0.875rem;
   align-self: flex-start;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.content-card .read-more:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
 }
 
 .home-heading {
@@ -1616,7 +1627,7 @@ body[data-active-nav="home"] main {
   }
 }
 
-/* ——— Unified minimal premium style ——— */
+/* ——— Единые поверхности (как на прежней главной) ——— */
 body {
   background: #f6f8fb;
 }
@@ -1630,27 +1641,33 @@ body {
   background: #0f3d66;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow: 0 6px 20px -12px rgba(15, 61, 102, 0.55);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body[data-active-nav="home"] .nav-wrap {
+  background: rgba(10, 25, 47, 0.52);
+  backdrop-filter: blur(12px) saturate(1.15);
+  -webkit-backdrop-filter: blur(12px) saturate(1.15);
 }
 
 .section-card,
 .content-card,
-.tile,
-.gov-banner {
+.tile {
   background: #fff;
   border: 1px solid var(--border-light);
 }
 
-/* После переопределения фона на белый нужен тёмный текст (раньше наследовалось color:#fff от синего баннера выше). */
 .gov-banner {
-  color: var(--text);
+  color: #fff;
+  background: var(--primary);
 }
 
 .gov-banner .gov-banner__text a {
-  color: var(--accent);
+  color: #fff;
 }
 
-.section-card:hover,
-.content-card:hover,
+/* Подъём при наведении только у плиток «Сервисы»; новости/объявления — без сдвига */
 .tile:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 24px -18px rgba(15, 61, 102, 0.35);
@@ -1660,7 +1677,7 @@ body {
 .modern-hero {
   margin-bottom: 1.8rem;
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: #fff;
   border: 1px solid var(--border-light);
   color: var(--text);
@@ -1796,22 +1813,28 @@ body {
   position: absolute;
   left: clamp(1rem, 6vw, 6rem);
   right: 1rem;
-  bottom: clamp(2rem, 9vh, 5.5rem);
+  /* выше от низа кадра — заголовок и текст читаются выше точки интереса видео */
+  bottom: clamp(4.5rem, 18vh, 9rem);
   max-width: min(780px, 84vw);
   color: #fff;
 }
 
 .hero-carousel__content h2 {
   margin: 0 0 0.45rem;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  max-width: 18ch;
 }
 
 .hero-carousel__content p {
-  margin: 0 0 1rem;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 1.25rem;
+  font-size: clamp(1rem, 1.75vw, 1.125rem);
+  line-height: 1.58;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+  max-width: 42ch;
 }
 
 .hero-carousel__cta {
@@ -1825,10 +1848,22 @@ body {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .hero-carousel__cta:hover {
   background: #1759b7;
+  transform: scale(1.03);
+}
+
+.hero-carousel__cta:active {
+  background: #154a9a;
+  transform: scale(0.98);
+}
+
+.hero-carousel__cta:focus-visible {
+  outline: 2px solid rgba(125, 211, 252, 0.9);
+  outline-offset: 3px;
 }
 
 .hero-carousel__btn {
@@ -1957,5 +1992,10 @@ body {
   .modern-hero__btn,
   .hero-carousel__slide {
     transition: none !important;
+  }
+
+  .hero-carousel__cta:hover,
+  .hero-carousel__cta:active {
+    transform: none;
   }
 }
