@@ -380,10 +380,9 @@ html.is-a11y-vis .gov-banner__text p {
   color: #fff !important;
 }
 
-html.is-a11y-vis .gov-banner__qr {
-  background: #fff !important;
-  color: #000 !important;
+html.is-a11y-vis .gov-banner__media-img {
   border: 2px solid #ffeb3b !important;
+  background: #fff !important;
 }
 
 /* Главная: заголовки блоков и плитки */

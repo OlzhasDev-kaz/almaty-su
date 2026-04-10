@@ -1004,20 +1004,24 @@ body[data-active-nav="home"] main {
   text-underline-offset: 0.15em;
 }
 
-.gov-banner__qr {
-  flex-shrink: 0;
-  width: 72px;
-  height: 72px;
-  background: #fff;
-  border-radius: var(--radius);
+.gov-banner__media {
   display: grid;
-  place-items: center;
-  font-size: 0.65rem;
-  color: var(--text-muted);
-  text-align: center;
-  padding: 0.25rem;
-  line-height: 1.2;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+  gap: 0.75rem;
+  align-items: center;
+  flex: 1 1 17rem;
+  min-width: 0;
+  max-width: min(100%, 26rem);
+}
+
+.gov-banner__media-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
   border: 1px solid var(--border);
+  background: #fff;
+  object-fit: contain;
 }
 
 /* Сетка: новости + объявления */
@@ -1538,10 +1542,10 @@ body[data-active-nav="home"] main {
     line-height: 1.45;
   }
 
-  .gov-banner__qr {
-    width: 64px;
-    height: 64px;
-    align-self: center;
+  .gov-banner__media {
+    flex: 1 1 auto;
+    max-width: 100%;
+    align-self: stretch;
   }
 
   .nav-wrap__inner {
@@ -1634,6 +1638,15 @@ body {
 .gov-banner {
   background: #fff;
   border: 1px solid var(--border-light);
+}
+
+/* После переопределения фона на белый нужен тёмный текст (раньше наследовалось color:#fff от синего баннера выше). */
+.gov-banner {
+  color: var(--text);
+}
+
+.gov-banner .gov-banner__text a {
+  color: var(--accent);
 }
 
 .section-card:hover,
