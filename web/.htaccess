@@ -1,0 +1,16 @@
+# Apache (обычный shared-хостинг). Если модули отключены — закомментируйте блоки.
+
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>
+
+# Раскомментируйте после выпуска SSL, чтобы вести весь трафик на HTTPS:
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>

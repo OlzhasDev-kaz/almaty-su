@@ -1,0 +1,17 @@
+{
+  "name": "almaty-su-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Офлайн-статика сайта ГКП «Алматы Су»: HTML, общий chrome через JS, вспомогательные генераторы.",
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes serve web -l 3330",
+    "start": "npm run dev",
+    "scaffold": "node tools/scaffold.mjs",
+    "render:meters": "node tools/render-meters-page.mjs",
+    "pack": "powershell -ExecutionPolicy Bypass -File tools/pack-deploy.ps1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist-pack/
+*.zip
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Чужой/случайный Next-проект — не коммитить артефакты
+site/

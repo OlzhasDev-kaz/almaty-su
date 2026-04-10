@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Формирование QR-кода для приборов учёта: размеры, защита, структура данных CRS, TYPE, W_SERIAL и др. — ГКП «Алматы Су»."
+    />
+    <title>QR код для ПУ — ГКП «Алматы Су»</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/a11y-vis.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body data-active-nav="qr-pu">
+    <main id="main" class="page-main">
+      <div class="layout-container">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+          <ol>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="potrebitelyam.html">Потребителям</a></li>
+            <li><span aria-current="page">QR код для ПУ</span></li>
+          </ol>
+        </nav>
+
+        <header class="page-intro">
+          <h1>QR код для ПУ</h1>
+          <p class="lead">
+            Требования к оформлению QR-кода на приборе учёта и расшифровка полей данных для интеграции с учётными системами (по материалам раздела на almatysu.kz).
+          </p>
+        </header>
+
+        <div class="tariff-stack tariff-stack--qr-pu">
+          <section class="tariff-panel tariff-panel--spec" aria-labelledby="qr-form-title">
+            <div class="tariff-panel__header">
+              <h2 id="qr-form-title">Формирование QR кода для приборов учета</h2>
+            </div>
+            <div class="qr-panel-body">
+              <div class="qr-example" aria-hidden="true">
+                <div class="qr-example__mark">
+                  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="64" height="64" fill="#fff" />
+                    <path fill="#124559" d="M4 4h20v20H4V4zm8 8h4v4h-4V12z" />
+                    <path fill="#124559" d="M40 4h20v20H40V4zm8 8h4v4h-4V12z" />
+                    <path fill="#124559" d="M4 40h20v20H4V40zm8 8h4v4h-4v-4z" />
+                    <path fill="#0d7c7a" d="M28 4h4v4h-4V4zm0 8h4v4h-4v-4zm8-8h4v4h-4V4zm8 0h4v4h-4V4zm8 0h4v8h-4V4zm-24 8h4v4h-4v-4zm16 0h4v4h-4v-4zm8 0h4v4h-4v-4zM28 20h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm-16 8h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zm-32 8h4v4h-4v-4zm8 0h4v4h-4v-4zm16 0h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zM28 36h4v4h-4v-4zm8 0h4v4h-4v-4zm-16 8h4v4h-4v-4zm8 0h4v4h-4v-4zm16 0h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4zM28 52h4v4h-4v-4zm8 0h4v4h-4v-4zm8 0h4v4h-4v-4z" />
+                  </svg>
+                </div>
+                <p class="qr-example__caption"><strong>QR</strong> кода 63636</p>
+                <p class="qr-example__hint">Условный пример нанесения кода в системе учёта</p>
+              </div>
+              <div class="qr-rules prose prose--tight">
+                <p>
+                  <strong>QR</strong> код должен иметь размеры <strong>40×40 мм</strong> (оптимальный размер), на оборотной стороне QR кода должно находиться содержимое в
+                  текстовом виде. QR код должен быть защищен от влаги и пыли (к примеру, двухстороннее ламинирование). Должно быть возможность крепления QR код к
+                  прибору учета (хомут).
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="tariff-panel tariff-panel--spec" aria-labelledby="qr-fields-title">
+            <div class="tariff-panel__header">
+              <h2 id="qr-fields-title">Структура данных в QR-коде</h2>
+              <p class="tariff-panel__caption">Поля и их назначение</p>
+            </div>
+            <div class="qr-field-list-wrap">
+              <dl class="qr-field-list">
+                <div class="qr-field-row">
+                  <dt><code>CRS</code></dt>
+                  <dd>
+                    Контрольная сумма значений параметров, рассчитывается по алгоритму <strong>MD5</strong>, необходима для проверки целостности документа.
+                  </dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>TYPE</code></dt>
+                  <dd>
+                    Тип документа, определяет принадлежность QR-кода к тому или иному типу данных (например, код <strong>9</strong> — информация о водосчётчиках,
+                    теплосчётчиках, радиомодулях и т.д.).
+                  </dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>VERSION</code></dt>
+                  <dd>Версия документа, позволяет сохранять совместимость старого и нового ПО при изменении структуры документа.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>COMMENT</code></dt>
+                  <dd>Дополнительная текстовая информация; поле может быть пустым.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>W_SERIAL</code></dt>
+                  <dd>Серийный номер прибора учета.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>W_TYPE</code></dt>
+                  <dd>Тип прибора учета.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>W_DIAMETER</code></dt>
+                  <dd>Диаметр прибора учета.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>W_CDATE</code></dt>
+                  <dd>Дата следующей поверки.</dd>
+                </div>
+                <div class="qr-field-row">
+                  <dt><code>W_PWEIGHT</code></dt>
+                  <dd>Цена импульса для удалённого опроса прибора учета.</dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </div>
+
+        <div class="info-callout qr-security-note">
+          <div>
+            <strong>Безопасность.</strong>
+            Не передавайте фото QR-кода и связанные с ним данные третьим лицам — это снижает риск несанкционированного доступа к учётной записи абонента.
+          </div>
+        </div>
+
+        <section class="prose tariff-links" aria-labelledby="qr-other">
+          <h2 id="qr-other">Иная деятельность</h2>
+          <ul>
+            <li><a href="raionnye-avariynye-sluzhby.html">Районные аварийные службы</a></li>
+            <li><a href="lyuk-soobshcite.html">Открытый люк? Сообщите нам</a></li>
+          </ul>
+        </section>
+
+        <div class="info-callout">
+          <div>
+            <strong>Срочно?</strong>
+            <a href="tel:+77273777444">+7 727 3 777 444</a> ·
+            <a href="tel:+77272746666">+7 727 274-66-66</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/nav-data.js"></script>
+    <script src="js/chrome.js"></script>
+    <script src="js/a11y-mode.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

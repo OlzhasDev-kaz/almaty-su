@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Сообщить об открытом люке в Алматы: форма обращения и телефоны аварийной диспетчерской."
+    />
+    <title>Открытый люк? Сообщите нам — ГКП «Алматы Су»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/a11y-vis.css" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body data-active-nav="lyuk">
+    <main id="main" class="page-main">
+      <div class="layout-container">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+          <ol>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="kanalizaciya.html">Канализация</a></li>
+            <li><span aria-current="page">Открытый люк? Сообщите нам</span></li>
+          </ol>
+        </nav>
+
+        <header class="page-intro">
+          <h1>Открытый люк? Сообщите нам</h1>
+          <p class="lead">
+            В городе десятки тысяч люков инженерных сетей. Открытый или повреждённый люк — риск для пешеходов и транспорта.
+            Сообщите адрес и, по возможности, фото; бригада уточнит балансовую принадлежность и устранит нарушение.
+          </p>
+        </header>
+
+        <div class="prose prose--article">
+          <p>
+            Для срочного реагирования звоните в круглосуточную аварийную диспетчерскую
+            <a href="tel:+77272746666"><strong>274-66-66</strong></a> (код 727) или на телефон доверия
+            <a href="tel:+77021002765"><strong>8&nbsp;702&nbsp;100&nbsp;2765</strong></a>. Форма ниже — макет для интеграции с
+            сервером; до подключения CMS удобнее звонок.
+          </p>
+        </div>
+
+        <div class="prose prose--form">
+          <form class="feedback-form" action="#" method="post">
+            <div class="form-grid">
+              <div class="field">
+                <label for="lyuk-name">Ваше имя (обязательно)</label>
+                <input id="lyuk-name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="field field--wide">
+                <label for="lyuk-email">Ваш e-mail (обязательно)</label>
+                <input id="lyuk-email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="field field--wide">
+                <label for="lyuk-subject">Тема</label>
+                <input id="lyuk-subject" name="subject" type="text" placeholder="Например: открытый люк, ул. …" />
+              </div>
+              <div class="field field--wide">
+                <label for="lyuk-msg">Сообщение</label>
+                <textarea
+                  id="lyuk-msg"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Адрес, ориентир, что именно обнаружено"
+                ></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Отправить</button>
+              <p class="form-hint">
+                Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в рамках обращения.
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="info-callout">
+          <div>
+            <strong>Срочно?</strong>
+            <a href="tel:+77272746666">+7 727 274-66-66</a> ·
+            <a href="tel:+77273777444">+7 727 3 777 444</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/nav-data.js"></script>
+    <script src="js/chrome.js"></script>
+    <script src="js/a11y-mode.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+
