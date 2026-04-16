@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Админ-панель | Алматы Су</title>
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-page">
+      <section class="admin-card" id="auth-card">
+        <h1>Админ-панель</h1>
+        <p class="admin-muted">Доступ только для уполномоченных сотрудников.</p>
+        <form id="auth-form">
+          <label for="admin-token">Токен доступа</label>
+          <input id="admin-token" name="token" type="password" autocomplete="current-password" required />
+          <button type="submit">Войти</button>
+        </form>
+      </section>
+
+      <section class="admin-card" id="settings-card" hidden>
+        <div class="admin-head">
+          <h2>Настройки сайта</h2>
+          <button type="button" id="logout-btn" class="btn-secondary">Выйти</button>
+        </div>
+
+        <form id="settings-form">
+          <label class="switch-row">
+            <input type="checkbox" id="mourning-mode" />
+            <span>Траурный режим (ч/б для всего сайта)</span>
+          </label>
+
+          <div class="admin-section">
+            <h3>Верхний баннер (карусель)</h3>
+            <p class="admin-muted">Один элемент = один слайд. Пустые заголовки не сохраняются.</p>
+            <div id="banner-list"></div>
+            <button type="button" id="add-banner-btn" class="btn-secondary">Добавить слайд</button>
+          </div>
+
+          <div class="admin-actions">
+            <button type="submit">Сохранить изменения</button>
+          </div>
+        </form>
+
+        <hr class="admin-divider" />
+
+        <form id="home-content-form">
+          <div class="admin-section">
+            <h3>Главная: Гос-баннер</h3>
+            <div id="gov-banner-fields"></div>
+          </div>
+
+          <div class="admin-section">
+            <h3>Главная: Сервисы</h3>
+            <label class="filter-field">Поиск по сервисам <input type="search" id="filter-services" placeholder="Введите название..." /></label>
+            <div id="service-list"></div>
+            <button type="button" id="add-service-btn" class="btn-secondary">Добавить сервис</button>
+          </div>
+
+          <div class="admin-section">
+            <h3>Главная: Hero-слайды</h3>
+            <p class="admin-muted">Видео укажите относительным путем (например, assets/carousel/carousel-1.mp4).</p>
+            <label class="filter-field">Поиск по hero-слайдам <input type="search" id="filter-hero-slides" placeholder="Введите заголовок..." /></label>
+            <div id="hero-slide-list"></div>
+            <button type="button" id="add-hero-slide-btn" class="btn-secondary">Добавить hero-слайд</button>
+          </div>
+
+          <div class="admin-section">
+            <h3>Главная: Новости</h3>
+            <label class="filter-field">Поиск по новостям главной <input type="search" id="filter-home-news" placeholder="Введите заголовок..." /></label>
+            <div id="news-list"></div>
+            <button type="button" id="add-news-btn" class="btn-secondary">Добавить новость</button>
+          </div>
+
+          <div class="admin-section">
+            <h3>Главная: Объявления</h3>
+            <label class="filter-field">Поиск по объявлениям <input type="search" id="filter-home-announcements" placeholder="Введите заголовок..." /></label>
+            <div id="announcement-list"></div>
+            <button type="button" id="add-announcement-btn" class="btn-secondary">Добавить объявление</button>
+          </div>
+
+          <div class="admin-actions">
+            <button type="submit">Сохранить контент главной</button>
+          </div>
+        </form>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+
+        <hr class="admin-divider" />
+
+        <form id="pages-content-form">
+          <div class="admin-section">
+            <h3>Контент страниц (novosti / антикоррупция)</h3>
+            <p class="admin-muted">Визуальное редактирование без JSON.</p>
+          </div>
+
+          <div class="admin-section">
+            <h3>Страница Новости: Лента</h3>
+            <label class="filter-field">Поиск по ленте новостей <input type="search" id="filter-news-page-feed" placeholder="Введите заголовок..." /></label>
+            <div id="news-page-feed-list"></div>
+            <button type="button" id="add-news-page-item-btn" class="btn-secondary">Добавить карточку</button>
+          </div>
+
+          <div class="admin-section">
+            <h3>Страница Новости: Архив</h3>
+            <div id="news-page-archive-fields"></div>
+          </div>
+
+          <div class="admin-section">
+            <h3>Антикоррупция: Контакты</h3>
+            <div id="antikorr-contact-fields"></div>
+          </div>
+
+          <div class="admin-section">
+            <h3>Антикоррупция: Документы</h3>
+            <label class="filter-field">Поиск по документам <input type="search" id="filter-antikorr-docs" placeholder="Введите название..." /></label>
+            <div id="antikorr-documents-list"></div>
+            <button type="button" id="add-antikorr-doc-btn" class="btn-secondary">Добавить документ</button>
+          </div>
+          <div class="admin-actions">
+            <button type="submit">Сохранить контент страниц</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <template id="banner-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Слайд</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Текст <textarea data-field="text" rows="2"></textarea></label>
+        <label>Ссылка <input type="url" data-field="linkUrl" placeholder="https://..." /></label>
+        <label>Текст кнопки <input type="text" data-field="linkLabel" placeholder="Подробнее" /></label>
+        <label>Изображение (URL) <input type="url" data-field="imageUrl" placeholder="https://..." /></label>
+      </article>
+    </template>
+
+    <template id="news-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Новость</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Ссылка <input type="text" data-field="href" placeholder="novosti.html" /></label>
+        <label>Дата ISO <input type="date" data-field="dateIso" /></label>
+        <label>Дата (подпись) <input type="text" data-field="dateLabel" placeholder="19.11.2025" /></label>
+        <label>Краткий текст <textarea data-field="summary" rows="2"></textarea></label>
+      </article>
+    </template>
+
+    <template id="announcement-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Объявление</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Ссылка <input type="text" data-field="href" placeholder="protivodeystvie-korrupcii.html" /></label>
+        <label>Краткий текст <textarea data-field="summary" rows="2"></textarea></label>
+      </article>
+    </template>
+
+    <template id="hero-slide-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Hero-слайд</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Подзаголовок <textarea data-field="subtitle" rows="2"></textarea></label>
+        <label>Ссылка кнопки <input type="text" data-field="href" placeholder="predpriyatie.html" /></label>
+        <label>Видео (путь) <input type="text" data-field="videoSrc" placeholder="assets/carousel/carousel-7.mp4" /></label>
+        <label>Подпись видео (aria) <input type="text" data-field="videoLabel" placeholder="ГКП «Алматы Су»" /></label>
+      </article>
+    </template>
+
+    <template id="service-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Сервис</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Название <input type="text" data-field="label" required /></label>
+        <label>Ссылка <input type="text" data-field="href" placeholder="o-shetchikah.html" /></label>
+        <label>Изображение (путь) <input type="text" data-field="imageSrc" placeholder="assets/services/service-1.png" /></label>
+        <label>Alt изображения <input type="text" data-field="imageAlt" /></label>
+      </article>
+    </template>
+
+    <template id="gov-banner-template">
+      <article class="banner-item">
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Текст <textarea data-field="text" rows="2"></textarea></label>
+        <label>Ссылка <input type="url" data-field="linkUrl" placeholder="https://..." /></label>
+        <label>Текст ссылки <input type="text" data-field="linkLabel" placeholder="www.example.kz" /></label>
+        <label>ARIA подпись медиаблока <input type="text" data-field="mediaLabel" /></label>
+        <label>Основное изображение (путь/URL) <input type="text" data-field="mainImageSrc" /></label>
+        <label>Alt основного изображения <input type="text" data-field="mainImageAlt" /></label>
+        <label>QR изображение (путь/URL) <input type="text" data-field="qrImageSrc" /></label>
+        <label>Alt QR изображения <input type="text" data-field="qrImageAlt" /></label>
+      </article>
+    </template>
+
+    <template id="news-page-feed-item-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Новость (страница)</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Заголовок <input type="text" data-field="title" required /></label>
+        <label>Ссылка <input type="text" data-field="href" placeholder="https://..." /></label>
+        <label>Дата ISO <input type="date" data-field="dateIso" /></label>
+        <label>Дата (подпись) <input type="text" data-field="dateLabel" placeholder="19.11.2025" /></label>
+        <label>Краткий текст <textarea data-field="summary" rows="2"></textarea></label>
+        <label>Текст кнопки <input type="text" data-field="readMoreLabel" placeholder="На сайте" /></label>
+      </article>
+    </template>
+
+    <template id="news-page-archive-template">
+      <article class="banner-item">
+        <label>Текст архива <textarea data-field="archiveText" rows="3"></textarea></label>
+        <label>Ссылка архива <input type="text" data-field="archiveLinkUrl" placeholder="https://..." /></label>
+        <label>Подпись ссылки <input type="text" data-field="archiveLinkLabel" /></label>
+      </article>
+    </template>
+
+    <template id="antikorr-contact-template">
+      <article class="banner-item">
+        <label>Телефон контакта <input type="text" data-field="contactsPhone" placeholder="+7 (727) 227-60-72" /></label>
+        <label>Ссылка для e-mail блока <input type="text" data-field="contactsEmailLinkUrl" placeholder="https://..." /></label>
+        <label>Подпись e-mail блока <input type="text" data-field="contactsEmailLinkLabel" /></label>
+      </article>
+    </template>
+
+    <template id="antikorr-document-template">
+      <article class="banner-item">
+        <div class="banner-item__head">
+          <strong>Документ</strong>
+          <div class="item-actions">
+            <button type="button" data-action="move-up" class="btn-secondary">↑</button>
+            <button type="button" data-action="move-down" class="btn-secondary">↓</button>
+            <button type="button" data-action="remove" class="btn-secondary">Удалить</button>
+          </div>
+        </div>
+        <label>Название <input type="text" data-field="title" required /></label>
+        <label>Ссылка <input type="text" data-field="href" placeholder="https://..." /></label>
+      </article>
+    </template>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>

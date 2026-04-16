@@ -1,0 +1,140 @@
+{
+  "heroSlides": [
+    {
+      "id": "hero-1",
+      "title": "Водоснабжение Алматы",
+      "subtitle": "Надёжная подача питьевой воды для города",
+      "href": "vodosnabzhenie-almaty.html",
+      "videoSrc": "assets/carousel/carousel-1.mp4",
+      "videoLabel": "Водоснабжение Алматы"
+    },
+    {
+      "id": "hero-2",
+      "title": "Источники воды",
+      "subtitle": "Озёра и водохранилища Заилийского Алатау",
+      "href": "istochniki-vodosnabzheniya.html",
+      "videoSrc": "assets/carousel/carousel-2.mp4",
+      "videoLabel": "Источники воды"
+    },
+    {
+      "id": "hero-3",
+      "title": "Качество воды",
+      "subtitle": "Контроль на всех этапах водоподготовки",
+      "href": "kontrol-kachestva-vody.html",
+      "videoSrc": "assets/carousel/carousel-3.mp4",
+      "videoLabel": "Качество воды"
+    },
+    {
+      "id": "hero-4",
+      "title": "Канализация",
+      "subtitle": "Эксплуатация и развитие ливневой и бытовой канализации",
+      "href": "kanalizaciya.html",
+      "videoSrc": "assets/carousel/carousel-4.mp4",
+      "videoLabel": "Канализация"
+    },
+    {
+      "id": "hero-5",
+      "title": "Очистные сооружения",
+      "subtitle": "Очистка сточных вод до нормативных показателей",
+      "href": "kanalizacionnye-ochistnye-sooruzheniya.html",
+      "videoSrc": "assets/carousel/carousel-5.mp4",
+      "videoLabel": "Очистные сооружения"
+    },
+    {
+      "id": "hero-6",
+      "title": "Сервисы для потребителей",
+      "subtitle": "Счётчики, договоры, центры обслуживания",
+      "href": "centry-obsluzhivaniya.html",
+      "videoSrc": "assets/carousel/carousel-6.mp4",
+      "videoLabel": "Сервисы для потребителей"
+    },
+    {
+      "id": "hero-7",
+      "title": "ГКП «Алматы Су»",
+      "subtitle": "Официальный оператор водоснабжения и канализации",
+      "href": "predpriyatie.html",
+      "videoSrc": "assets/carousel/carousel-7.mp4",
+      "videoLabel": "ГКП «Алматы Су»"
+    }
+  ],
+  "govBanner": {
+    "title": "РЕФЕРЕНДУМ 14 МАРТА",
+    "text": "Поиск избирателя по ИИН — www.election.gov.kz",
+    "linkUrl": "https://www.election.gov.kz",
+    "linkLabel": "KUBIK",
+    "mediaLabel": "Референдум 14 марта: материалы и QR-код",
+    "mainImageSrc": "assets/referendum.jpeg",
+    "mainImageAlt": "Информационный материал о референдуме 15 марта",
+    "qrImageSrc": "assets/qr_for_referendum.jpeg",
+    "qrImageAlt": "QR-код для перехода на сайт избирательной комиссии"
+  },
+  "services": [
+    {
+      "id": "service-1",
+      "label": "О счетчиках",
+      "href": "o-shetchikah.html",
+      "imageSrc": "assets/services/service-1.png",
+      "imageAlt": ""
+    },
+    {
+      "id": "service-2",
+      "label": "Подключение к сетям",
+      "href": "podklyuchenie-seti.html",
+      "imageSrc": "assets/services/service-2.png",
+      "imageAlt": ""
+    },
+    {
+      "id": "service-3",
+      "label": "Центры по обслуживанию потребителей",
+      "href": "centry-obsluzhivaniya.html",
+      "imageSrc": "assets/services/service-3.png",
+      "imageAlt": ""
+    },
+    {
+      "id": "service-4",
+      "label": "Личный кабинет",
+      "href": "lichnyy-kabinet.html",
+      "imageSrc": "assets/services/service-4.png",
+      "imageAlt": ""
+    },
+    {
+      "id": "service-5",
+      "label": "Центры обслуживания",
+      "href": "centry-obsluzhivaniya.html",
+      "imageSrc": "assets/services/service-5.png",
+      "imageAlt": ""
+    }
+  ],
+  "news": [
+    {
+      "id": "news-1",
+      "title": "Акцию «Погаси долги — спишем пеню» запустили в Алматы для потребителей услуг холодного водоснабжения и канализации.",
+      "href": "novosti.html",
+      "summary": "Акция распространяется на физические лица (владельцев...",
+      "dateIso": "2025-11-19",
+      "dateLabel": "19.11.2025"
+    },
+    {
+      "id": "news-2",
+      "title": "В Алматы упрощена процедура оформления коммунальных услуг для новых владельцев жилья",
+      "href": "novosti.html",
+      "summary": "В Алматы внедрены новые цифровые решения,...",
+      "dateIso": "2025-11-19",
+      "dateLabel": "19.11.2025"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "ann-1",
+      "title": "Объявление",
+      "href": "protivodeystvie-korrupcii.html",
+      "summary": "Государственное коммунальное предприятие на праве хозяйственного ведения «Алматы Су» Управления энергетики и водоснабжения города Алматы уведомляет..."
+    },
+    {
+      "id": "ann-2",
+      "title": "Комплаенс",
+      "href": "protivodeystvie-korrupcii.html",
+      "summary": "АНОНС О НАЧАЛЕ ПУБЛИЧНОГО ОБСУЖДЕНИЯ РЕЗУЛЬТАТОВ ВНУТРЕННЕГО АНАЛИЗА КОРРУПЦИОННЫХ РИСКОВ (далее-ВАКР) Анализа коррупционных рисков в деятельности ..."
+    }
+  ]
+}

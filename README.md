@@ -26,6 +26,20 @@ npm run dev
 Откроется статический сервер на порту **3330** с корнем `web/`.
 
 ```bash
+$env:ADMIN_TOKEN="change-me"
+npm run server
+```
+
+Запускает сайт с API на том же порту (`/api/feedback`, `/api/site-settings`, `/api/admin/site-settings`).
+`/admin.html` доступна только с корректным токеном и позволяет включать траурный ч/б режим и редактировать верхнюю баннер-карусель.
+Контент главной (новости/объявления) отдается через `/api/content/home` из `data/home-content.json`.
+Для админки доступны также `/api/admin/content/home` (чтение/сохранение контента главной).
+В `data/home-content.json` теперь также хранятся `heroSlides` для главной карусели (редактируются из админки).
+Там же управляются `govBanner` и `services` для главной страницы.
+Контент страниц `novosti.html` и `protivodeystvie-korrupcii.html` отдается через `/api/content/pages` из `data/pages-content.json`, админ-доступ: `/api/admin/content/pages`.
+В админке для этих страниц доступен визуальный CRUD (лента новостей, архив, контакты, документы) без ручного JSON.
+
+```bash
 npm run render:meters
 ```
 

@@ -1515,3 +1515,50 @@ body:not([data-active-nav="home"]) .layout-container--home {
   font-size: 0.875rem;
   color: var(--text-muted);
 }
+
+html.is-mourning-mode {
+  filter: grayscale(1);
+}
+
+.site-top-banner {
+  display: grid;
+  background: #15283f;
+  color: #fff;
+}
+
+.site-top-banner__slide {
+  display: none;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+}
+
+.site-top-banner__slide.is-active {
+  display: grid;
+}
+
+.site-top-banner__text strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.site-top-banner__text p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.94;
+}
+
+.site-top-banner__link {
+  display: inline-flex;
+  margin-top: 6px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.site-top-banner__img {
+  width: 84px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+}

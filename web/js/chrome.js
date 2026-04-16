@@ -12,6 +12,50 @@
       .replace(/"/g, "&quot;");
   }
 
+  function escapeAttr(s) {
+    return escapeHtml(s).replace(/'/g, "&#39;");
+  }
+
+  function applyMourningMode(enabled) {
+    document.documentElement.classList.toggle("is-mourning-mode", !!enabled);
+    document.documentElement.setAttribute("data-mourning-mode", enabled ? "true" : "false");
+  }
+
+  function buildTopBanner(settings) {
+    var banners = (settings && settings.topBanners) || [];
+    if (!banners.length) return "";
+    var slides = banners
+      .map(function (banner, idx) {
+        var action = "";
+        if (banner.linkUrl) {
+          action =
+            '<a class="site-top-banner__link" href="' +
+            escapeAttr(banner.linkUrl) +
+            '">' +
+            escapeHtml(banner.linkLabel || "Подробнее") +
+            "</a>";
+        }
+        var image = banner.imageUrl
+          ? '<img class="site-top-banner__img" src="' + escapeAttr(banner.imageUrl) + '" alt="" loading="lazy" decoding="async" />'
+          : "";
+        return (
+          '<article class="site-top-banner__slide' +
+          (idx === 0 ? " is-active" : "") +
+          '">' +
+          '<div class="site-top-banner__text"><strong>' +
+          escapeHtml(banner.title || "") +
+          "</strong>" +
+          (banner.text ? "<p>" + escapeHtml(banner.text) + "</p>" : "") +
+          action +
+          "</div>" +
+          image +
+          "</article>"
+        );
+      })
+      .join("");
+    return '<section class="site-top-banner js-site-top-banner" aria-label="Служебные объявления">' + slides + "</section>";
+  }
+
   function buildTopBar() {
     var fc = SU.topContacts || [];
     var dd = fc
@@ -114,9 +158,10 @@
     );
   }
 
-  function buildChromeTop(activeId) {
+  function buildChromeTop(activeId, settings) {
     return (
       '<a class="skip-link" href="#main">Перейти к содержимому</a>' +
+      buildTopBanner(settings) +
       buildTopBar() +
       renderMainNav(activeId || "home")
     );
@@ -143,6 +188,40 @@
 
   var activeId = document.body.getAttribute("data-active-nav") || "home";
 
-  main.insertAdjacentHTML("beforebegin", buildChromeTop(activeId));
-  main.insertAdjacentHTML("afterend", buildChromeBottom());
+  function initTopBannerRotation() {
+    var root = document.querySelector(".js-site-top-banner");
+    if (!root) return;
+    var slides = root.querySelectorAll(".site-top-banner__slide");
+    if (slides.length < 2) return;
+    var index = 0;
+    window.setInterval(function () {
+      slides[index].classList.remove("is-active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("is-active");
+    }, 7000);
+  }
+
+  function withFallbackSettings() {
+    return { mourningMode: false, topBanners: [] };
+  }
+
+  function renderLayout(settings) {
+    applyMourningMode(settings.mourningMode);
+    main.insertAdjacentHTML("beforebegin", buildChromeTop(activeId, settings));
+    main.insertAdjacentHTML("afterend", buildChromeBottom());
+    initTopBannerRotation();
+  }
+
+  fetch("/api/site-settings")
+    .then(function (r) {
+      if (!r.ok) throw new Error("settings");
+      return r.json();
+    })
+    .then(function (payload) {
+      var settings = payload && payload.ok ? payload.settings : withFallbackSettings();
+      renderLayout(settings || withFallbackSettings());
+    })
+    .catch(function () {
+      renderLayout(withFallbackSettings());
+    });
 })();

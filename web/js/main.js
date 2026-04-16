@@ -232,6 +232,7 @@
   function initHeroCarousel() {
     var root = document.querySelector(".js-hero-carousel");
     if (!root) return;
+    if (root.getAttribute("data-carousel-initialized") === "1") return;
 
     var slides = root.querySelectorAll(".hero-carousel__slide");
     var dots = root.querySelectorAll(".hero-carousel__dot");
@@ -333,9 +334,18 @@
 
     render(0);
     start();
+    root.setAttribute("data-carousel-initialized", "1");
   }
 
-  initHeroCarousel();
+  window.ALMATY_SU_initHeroCarousel = function () {
+    var root = document.querySelector(".js-hero-carousel");
+    if (root) {
+      root.removeAttribute("data-carousel-initialized");
+    }
+    initHeroCarousel();
+  };
+
+  window.ALMATY_SU_initHeroCarousel();
 
   /* ——— Поиск по сайту (клиентский индекс из nav-data) ——— */
   function escapeSearchHtml(s) {
