@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Almaty Su - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cee5fa",
+                        "on-primary-container": "#c8daff",
+                        "tertiary": "#005412",
+                        "on-secondary-fixed": "#051e2c",
+                        "secondary": "#4b6172",
+                        "surface-variant": "#e1e3e4",
+                        "on-secondary-container": "#516778",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#001b3d",
+                        "background": "#f8f9fa",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00478d",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "outline-variant": "#c2c6d4",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#424752",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1d",
+                        "surface-tint": "#005db6",
+                        "tertiary-fixed-dim": "#88d982",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#1d6e25",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-container-high": "#e7e8e9",
+                        "outline": "#727783",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#cee5fa",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-container": "#9bee94",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#334959",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "on-primary-fixed-variant": "#00468c",
+                        "tertiary-fixed": "#a3f69c",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "secondary-fixed-dim": "#b2c9dd",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002204",
+                        "primary-container": "#005eb8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(243, 244, 245, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 flex flex-col py-6 border-r border-slate-100 z-50">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-blue-900 leading-none">Almaty Su</h1>
+<p class="text-[10px] uppercase tracking-widest text-slate-500 mt-1">Utility Management</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 bg-blue-100/50 text-blue-700 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-semibold">Site Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+<span class="text-sm font-medium">Home Content</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium">Page Content</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<div class="p-4 bg-primary-container/10 rounded-2xl mb-4">
+<p class="text-xs font-semibold text-primary mb-2">Need assistance?</p>
+<button class="w-full py-2 px-4 bg-primary text-white rounded-lg text-xs font-bold shadow-lg shadow-primary/20">System Support</button>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:text-blue-600 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-sm font-medium">Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-sm font-medium">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full h-16 sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm flex items-center justify-between px-8">
+<div class="flex items-center flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search management tools..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900 leading-none">Admin User</p>
+<p class="text-[10px] text-slate-500">Super Administrator</p>
+</div>
+<img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="professional headshot of a middle-aged male administrator in a clean office environment with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa8pd4qqcXw2x6U6Q2IeWpMiNV3bvf_HGmxBo_NXTwXN3QeDdarrLMs4IA7HfrG05ez4z2c5vpaOFUOPocELXiiVgR_L4ybVvNrqIyK2_KEQAQeJuzg0uteP1ftspdu1zJzCMSs2eoGJn-2mM88z0gif8VK2xREIWg79Fjo6HMySKJCGVyU8ahHbQ2DsjOEAlqoTF_9OyQmHhFbBmREX3RgZipTxqntIO773xeykASUuVfWWhkQ-y-eVTTfRAKE4a9bNHpcipj9ZY"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Site Management</h2>
+<p class="text-on-surface-variant mt-1">Configure global settings and manage homepage content modules.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 rounded-xl bg-white text-slate-700 text-sm font-semibold shadow-sm hover:bg-slate-50 transition-colors border border-slate-200">
+                        View Live Site
+                    </button>
+<button class="px-5 py-2.5 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Publish Changes
+                    </button>
+</div>
+</div>
+<!-- Bento Layout Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Settings & Config -->
+<div class="lg:col-span-1 space-y-8">
+<!-- Global Settings Card -->
+<section class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-100">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-blue-50 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900">General Config</h3>
+</div>
+<div class="space-y-6">
+<!-- Mourning Mode Toggle -->
+<div class="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+<div>
+<p class="text-sm font-bold text-slate-800">Mourning Mode</p>
+<p class="text-xs text-slate-500">Enable grayscale site filter</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Header Banner Manager -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Header Carousel</label>
+<button class="text-xs font-bold text-primary hover:underline">Add Slide</button>
+</div>
+<div class="space-y-2">
+<div class="group flex items-center justify-between p-3 bg-white border border-slate-100 rounded-xl hover:border-primary/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-slate-200 rounded-md overflow-hidden">
+<img alt="Slide preview" class="w-full h-full object-cover" data-alt="vibrant abstract blue waves representing fresh flowing water with sunlight reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6-vJOwt4nP2DewVhSJv8bfMURPxS2ioys39fVetWj5rBKV-EyI2h2jG-YIRonLffqGcG0CAJ73bAW4YSgp5FXB0ia1zC6Ez028lLhul-jHP0DzGAvtRCtuxJwN-knL9m1DikZVxWqOaE4J8yZmY2M93d_AvKSDGinFmFHBzyNqg1KK92t3CBQ6Vi5OssgMlKgXolpAwZ3p4_ZSGM-Tjk3tyDyWEmR3okVc4OKgLs6B3XSDzPkpNkTl2ozeVfdSElmMpp3l6TjT-E"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Winter Prep 2024</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-error cursor-pointer text-lg">delete</span>
+</div>
+<div class="group flex items-center justify-between p-3 bg-white border border-slate-100 rounded-xl hover:border-primary/30 transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 bg-slate-200 rounded-md overflow-hidden">
+<img alt="Slide preview" class="w-full h-full object-cover" data-alt="industrial water filtration systems in a modern treatment facility with cool blue industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxvMTOHk_-B1MoMzA-Qm2TXBj6QzZTrk9HIqVvduHwV-qElciuC-GQWdhzn8LgV8aS0s0AFKR3oTmq42xBtjHRE5mJwoIWEs-V0cCnIsBBuM0ZOz61OTTbBJwnBVxOTjg4iLJohhvPcPNWCp380ibtaQluwb6JofBOI6G8cCDRrIgMOHaAXrTV4ozIb0on_D-ec5-n464dtIGdOlGD2aF-tclhkshg1A0-nHG62vawO-FPwEMO5kyFyyODixALbNdiqZrBEip0J_k"/>
+</div>
+<span class="text-sm font-medium text-slate-700">Water Quality Report</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-error cursor-pointer text-lg">delete</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gov Banner Section -->
+<section class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-100">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-emerald-50 text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900">Gov Banner</h3>
+</div>
+<span class="px-2.5 py-1 bg-tertiary-container/20 text-tertiary-fixed-dim text-[10px] font-bold rounded-full uppercase tracking-widest">Active</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-slate-50 rounded-xl border-l-4 border-tertiary">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Current Display</p>
+<p class="text-sm font-medium text-slate-800">State portal integration for digital services</p>
+</div>
+<button class="w-full py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors">Edit Content</button>
+</div>
+</section>
+</div>
+<!-- Center & Right Column: Content Lists & Hero -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Hero Video/Slide Section -->
+<section class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-slate-100 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-12 translate-x-12"></div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900">Hero Section Slides</h3>
+</div>
+<button class="text-sm font-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">add</span> New Hero Slide
+                            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Hero Item 1 -->
+<div class="group relative rounded-xl overflow-hidden border border-slate-200">
+<div class="aspect-video bg-slate-900">
+<img alt="Hero background" class="w-full h-full object-cover opacity-60" data-alt="panoramic sunset view of Almaty city skyline with snowy mountains in the background and soft purple sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeUJt8ZGKrLs98P9E7VosuW0ZNbjwUlqxfLzX-PFDnM-E7zvMgVLyxEhdqC51dDFUZyTHmNkuTPS1S00DrRG2uJlNTwJsLKpfRRDk_FjPGKwIfnF3O5o15Rkn1HJf8I_6m57KN4lHRUjkkJij74CR38YP28q0yNPwFPxmEPkGqQeSpoWSlaIGtc0r1ZhFs32z02h3W7m-TijAhsXQynFRIY5YamV5W9STSj5W9GcQ1_RIz6dafjwPz9rSZlAMEE405qpThKCLJuT0"/>
+</div>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent">
+<p class="text-white font-bold text-sm">Clean Water for Almaty</p>
+<p class="text-white/70 text-[10px]">assets/videos/hero_clean.mp4</p>
+</div>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+<button class="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="w-8 h-8 bg-error/80 backdrop-blur-md rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+<!-- Hero Item 2 -->
+<div class="group relative rounded-xl overflow-hidden border border-slate-200">
+<div class="aspect-video bg-slate-900">
+<img alt="Hero background" class="w-full h-full object-cover opacity-60" data-alt="close-up of crystal clear water splashing into a clean glass with soft studio lighting and blue highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6fwo4Yg4xz7DOJ8_4LL4MSGAoiCsMQt_z9GqMZd8gOumkGDYCCjFkjWo7mSk9GpOh127tvhUl32y3lxPZlHJ9vjg3plGJXqT5xab5R6Y6cXNKRJOS-xpcCW6oSsfXglLqwl6N_C93_Cj4Y0KBE5R7EOr8jFQYUDRhSPOHpCjGCkEXukDe0aa0sB1Q4xhLGaV0OPgAnE_WzYw_pZ-AjimepQ3aHwiCuK1lKq9jpUbcoiU9mzaYCINDnJE9eCOswcGZ2px7YuRJkaQ"/>
+</div>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent">
+<p class="text-white font-bold text-sm">Infrastructure Modernization</p>
+<p class="text-white/70 text-[10px]">assets/videos/hero_infra.mp4</p>
+</div>
+<div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+<button class="w-8 h-8 bg-white/20 backdrop-blur-md rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="w-8 h-8 bg-error/80 backdrop-blur-md rounded-lg flex items-center justify-center text-white"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- News & Announcements (Tabs Style) -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+<div class="flex items-center justify-between p-6 border-b border-slate-50">
+<div class="flex gap-8">
+<button class="text-sm font-bold text-primary border-b-2 border-primary pb-1">News (Novosti)</button>
+<button class="text-sm font-bold text-slate-400 hover:text-slate-600 pb-1">Announcements</button>
+<button class="text-sm font-bold text-slate-400 hover:text-slate-600 pb-1">Anti-Corruption</button>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm">filter_list</span>
+<input class="pl-8 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:ring-1 focus:ring-primary" placeholder="Filter..." type="text"/>
+</div>
+<button class="p-1.5 bg-primary text-white rounded-lg"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+<div class="divide-y divide-slate-50">
+<!-- News Row 1 -->
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors group">
+<div class="w-16 h-16 rounded-xl bg-slate-200 flex-shrink-0 overflow-hidden">
+<img alt="News thumb" class="w-full h-full object-cover" data-alt="technician in a blue uniform inspecting a complex water meter and pipes in a well-lit residential basement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtAVEBZa1sES73H9HMHiGyFvWiOs2eUCfnHvT2YOgiAANNSUfPypfgBDZp1O0Mgytg98l9rzF3Nf7_nJ7UmHfcNWUSeOf0bq9-ge8XaDLJ4TYYDw8s0X7MLxVl34RAF-XLbVFi7l35Ou3vapSha7iwR6BJy7QvoJBdZYqmqAvV3h5_PbkryJ3DNdwHdK5TKpzIFGCHg4YmySIQVZpErD4wS5A0B2ZljbcFQ6lqe3RcxRrRVSqu5_1-qfBkMaG-nfmtxOPEJcv9IuY"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded uppercase">System Update</span>
+<span class="text-[10px] text-slate-400 font-medium">Oct 24, 2023</span>
+</div>
+<h4 class="text-sm font-bold text-slate-800">Planned maintenance in Medeu district</h4>
+<p class="text-xs text-slate-500 line-clamp-1">Service will be temporarily suspended for structural upgrades to the main aqueduct...</p>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</div>
+<!-- News Row 2 -->
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 transition-colors group">
+<div class="w-16 h-16 rounded-xl bg-slate-200 flex-shrink-0 overflow-hidden">
+<img alt="News thumb" class="w-full h-full object-cover" data-alt="a large blue map of a city showing water pipe networks with digital data overlays and glowing nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoi6V6ZcQMPg3Y7l98FrGUbTLy3lC1HJvuPZK6F1rCfm-jEUGBX9cyrDIUDe1aJZI1C2AOZ9fIzhMVUj7AVNLbPDc4_5bZTSOjgLyk9sVnf0jH1RT1lSvMzjGxhp6_6ZVcXVGyFfqfylAi4Q3fexbW1RlnCKp6QKmXGhQxue0_7QdnBphOlFfbvt0bJJ2lMkH5doHWyxIzIEzJB3MGRyvRl4R1rChyk2G23shY8OEGjPP62GwtWXxr-TZ9bUiWLUbj1a89qy7VG48"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded uppercase">Ecology</span>
+<span class="text-[10px] text-slate-400 font-medium">Oct 22, 2023</span>
+</div>
+<h4 class="text-sm font-bold text-slate-800">Water quality exceeds international standards</h4>
+<p class="text-xs text-slate-500 line-clamp-1">Recent lab results confirm that Almaty Su filtration technology provides the highest purity levels...</p>
+</div>
+<div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-lg">edit</span></button>
+<button class="p-2 text-slate-400 hover:text-error"><span class="material-symbols-outlined text-lg">delete</span></button>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50/50 flex justify-center">
+<button class="text-xs font-bold text-slate-500 hover:text-primary">Load more entries...</button>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900">Featured Services</h3>
+<button class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:shadow-sm">Manage All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Service Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<div class="w-full h-32 rounded-xl bg-slate-100 mb-4 overflow-hidden">
+<img alt="Service thumbnail" class="w-full h-full object-cover" data-alt="a stack of neatly organized water utility bills and documents on a clean white desk with a pen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALjS_7INe-TVj36ER1xdlsOTJMpi0GHPvIY7Wpx1k7NbB4Y_2Y-EbeAl_GuS3_YpTCb1Ao24CyVZFGUT_gVq3yAcLkXb0RLz2ui6-j6eTNrjWPLhOLZiARwHserBCwwRoma3HjLxFkijJsOm95aWdoQP9-HkGz8Wp08KMAE4sm5iO26LB6u5yVFb5QPiAz9IvUQmBMPFgRTMGqIbqsldpBPAAlnSnFyyoBL90z8Rye3RoNhHrjS90vbXj8gf2btdNcMjzHuB2i6BQ"/>
+</div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Pay Bills Online</h4>
+<p class="text-xs text-on-surface-variant mb-4">Direct payment portal integration for residents.</p>
+<button class="text-xs font-bold text-primary flex items-center gap-1">Edit <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<!-- Service Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<div class="w-full h-32 rounded-xl bg-slate-100 mb-4 overflow-hidden">
+<img alt="Service thumbnail" class="w-full h-full object-cover" data-alt="a smart water meter device with a digital display showing consumption metrics in a clean utility closet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTcLeLbcJ8GiAjx0hmTO0fche6VJtPYbkJ9-YvHddWuQkJa7VIDcW9jPGtrH2jm47hHsqhnKAAYPyzv4JqcH1se3puW73biDOmro7j3xQ78UDRSt1gma5waaGTWQgGdETX4VtZO7O-4SOYe3R4WS5xU0RPgqG974ZaEoSB9RY0w5i_MAX3gC98zsE-vaDGVV0yaITcmlTnKiKu_28jh3lV0Q-ro1UfsEBD81UBbTAI4cqZJ1NjsTlyBYr6KqXFWNd9rhHrCs44cZY"/>
+</div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">Meter Readings</h4>
+<p class="text-xs text-on-surface-variant mb-4">Submit monthly meter data via secure portal.</p>
+<button class="text-xs font-bold text-primary flex items-center gap-1">Edit <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<!-- Service Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+<div class="w-full h-32 rounded-xl bg-slate-100 mb-4 overflow-hidden">
+<img alt="Service thumbnail" class="w-full h-full object-cover" data-alt="a sleek modern water tap dispensing a smooth stream of clear water into a glass basin with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPwvfR1DJO9l2MF4gD7EmRs-mdohZB24QDQQDNANS_aQrg4b9d5e5RhvvXxXOGsobFNFxi8BiiyRnLgCmINwG5CUU3fa0R6vEBrbCqOjlJFSTU7tXsXaPw2hDkXCrPbgv5LVIFPafyICqJuP7Ks-korZJ9Wow3I3Hap0O7cx6PHe2cFxfEMV-tzqi12DFY1dY47ofAyjg7k6iO2-pUtmbh0nwhBfjsN-5vSncuWWhcPktJ5_B2p8JPu7_y3CRjubO9t2Ak1FG_GO0"/>
+</div>
+<h4 class="text-sm font-bold text-slate-900 mb-1">New Connection</h4>
+<p class="text-xs text-on-surface-variant mb-4">Apply for residential or commercial water supply.</p>
+<button class="text-xs font-bold text-primary flex items-center gap-1">Edit <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Form/Modal Overlay (Static Design Example) -->
+<div class="glass-panel p-8 rounded-3xl border border-white/50 shadow-2xl space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-xl font-extrabold text-slate-900">Add New Content Block</h3>
+<p class="text-sm text-slate-500">Populate the homepage with dynamic modules.</p>
+</div>
+<button class="p-2 hover:bg-slate-200 rounded-full transition-colors"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Block Title (RU)</label>
+<input class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Enter title in Russian" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Block Title (KZ)</label>
+<input class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="Enter title in Kazakh" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Category Tag</label>
+<select class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none appearance-none">
+<option>Information</option>
+<option>Alert</option>
+<option>Service</option>
+<option>Corporate</option>
+</select>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Thumbnail Upload</label>
+<div class="w-full h-40 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center bg-slate-50/50 hover:bg-slate-50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-slate-300 text-4xl group-hover:text-primary transition-colors">cloud_upload</span>
+<p class="text-xs font-medium text-slate-400 mt-2">Drop image or click to browse</p>
+</div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="flex-1 py-3 bg-slate-100 text-slate-600 font-bold rounded-xl hover:bg-slate-200 transition-colors">Discard</button>
+<button class="flex-1 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all">Save Block</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="p-8 border-t border-slate-100 flex items-center justify-between text-slate-400 text-[11px] font-medium uppercase tracking-widest">
+<p>© 2023 Almaty Su Management. Internal Use Only.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Security Policy</a>
+<a class="hover:text-primary transition-colors" href="#">V 2.4.1</a>
+</div>
+</footer>
+</main>
+</body></html>
