@@ -73,9 +73,9 @@
           '" data-index="' +
           idx +
           '">' +
-          '<video class="hero-carousel__media" muted playsinline preload="' +
-          (idx === 0 ? "auto" : "metadata") +
-          '" aria-label="' +
+          '<video class="hero-carousel__media" muted playsinline preload="none"' +
+          (item.posterSrc ? ' poster="' + escapeHtml(item.posterSrc) + '"' : "") +
+          ' aria-label="' +
           escapeHtml(item.videoLabel || item.title) +
           '">' +
           '<source src="' +

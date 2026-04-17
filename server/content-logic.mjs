@@ -11,6 +11,7 @@ function sanitizeItem(item, withDate) {
     title: String(item?.title || "").trim(),
     href: String(item?.href || "").trim() || "#",
     summary: String(item?.summary || "").trim(),
+    active: item?.active !== false,
     ...(withDate
       ? {
           dateIso: String(item?.dateIso || "").trim(),
@@ -28,6 +29,7 @@ function sanitizeHeroSlide(item, index) {
     href: String(item?.href || "").trim() || "#",
     videoSrc: String(item?.videoSrc || "").trim(),
     videoLabel: String(item?.videoLabel || "").trim(),
+    active: item?.active !== false,
   };
 }
 
@@ -38,6 +40,7 @@ function sanitizeServiceItem(item, index) {
     href: String(item?.href || "").trim() || "#",
     imageSrc: String(item?.imageSrc || "").trim(),
     imageAlt: String(item?.imageAlt || "").trim(),
+    active: item?.active !== false,
   };
 }
 
@@ -59,17 +62,17 @@ function sanitizeHomeContent(raw) {
   const heroSlides = Array.isArray(raw?.heroSlides)
     ? raw.heroSlides
         .map((item, index) => sanitizeHeroSlide(item, index))
-        .filter((item) => item.title && item.videoSrc)
+        .filter((item) => item.title && item.videoSrc && item.active !== false)
     : [];
   const govBanner = sanitizeGovBanner(raw?.govBanner || {});
   const services = Array.isArray(raw?.services)
     ? raw.services
         .map((item, index) => sanitizeServiceItem(item, index))
-        .filter((item) => item.label && item.imageSrc)
+        .filter((item) => item.label && item.imageSrc && item.active !== false)
     : [];
-  const news = Array.isArray(raw?.news) ? raw.news.map((item) => sanitizeItem(item, true)).filter((item) => item.title) : [];
+  const news = Array.isArray(raw?.news) ? raw.news.map((item) => sanitizeItem(item, true)).filter((item) => item.title && item.active !== false) : [];
   const announcements = Array.isArray(raw?.announcements)
-    ? raw.announcements.map((item) => sanitizeItem(item, false)).filter((item) => item.title)
+    ? raw.announcements.map((item) => sanitizeItem(item, false)).filter((item) => item.title && item.active !== false)
     : [];
   return { heroSlides, govBanner, services, news, announcements };
 }

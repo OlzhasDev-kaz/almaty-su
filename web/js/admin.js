@@ -779,7 +779,7 @@
 
   function readItems(container, fields) {
     return Array.prototype.slice.call(container.querySelectorAll(".banner-item")).map(function (item) {
-      var payload = { id: item.dataset.id || "" };
+      var payload = { id: item.dataset.id || "", active: item.dataset.active !== "false" };
       fields.forEach(function (field) {
         var input = item.querySelector('[data-field="' + field + '"]');
         payload[field] = input ? input.value.trim() : "";
@@ -1037,6 +1037,7 @@
 
   if (newsEditorBackBtn) {
     newsEditorBackBtn.addEventListener("click", function () {
+      applyNewsEditorChanges();
       closeNewsEditor();
       renderNewsManagementList();
     });
@@ -1044,6 +1045,7 @@
 
   if (newsEditorBackBtnBottom) {
     newsEditorBackBtnBottom.addEventListener("click", function () {
+      applyNewsEditorChanges();
       closeNewsEditor();
       renderNewsManagementList();
     });
@@ -1070,6 +1072,7 @@
 
   if (serviceEditorBackBtn) {
     serviceEditorBackBtn.addEventListener("click", function () {
+      applyServiceEditorChanges();
       closeServiceEditor();
       renderServiceManagementList();
     });
@@ -1095,6 +1098,7 @@
 
   if (heroEditorBackBtn) {
     heroEditorBackBtn.addEventListener("click", function () {
+      applyHeroEditorChanges();
       closeHeroEditor();
       renderHeroManagementList();
     });
@@ -1120,6 +1124,7 @@
 
   if (announcementEditorBackBtn) {
     announcementEditorBackBtn.addEventListener("click", function () {
+      applyAnnouncementEditorChanges();
       closeAnnouncementEditor();
       renderAnnouncementManagementList();
     });
@@ -1300,6 +1305,12 @@
   homeContentForm.addEventListener("submit", async function (event) {
     event.preventDefault();
     try {
+      // Flush any open inline editors so their unsaved changes are not lost on save
+      if (currentEditingNewsIndex >= 0) applyNewsEditorChanges();
+      if (currentEditingServiceIndex >= 0) applyServiceEditorChanges();
+      if (currentEditingHeroIndex >= 0) applyHeroEditorChanges();
+      if (currentEditingAnnouncementIndex >= 0) applyAnnouncementEditorChanges();
+
       var servicesValidation = validateRequired(serviceList, ["label", "imageSrc"]);
       if (!servicesValidation.ok) {
         setStatus(servicesValidation.message, true);
@@ -1334,10 +1345,10 @@
             "qrImageSrc",
             "qrImageAlt",
           ])[0] || {},
-          services: readItems(serviceList, ["label", "href", "imageSrc", "imageAlt"]),
-          heroSlides: readItems(heroSlideList, ["title", "subtitle", "href", "videoSrc", "videoLabel"]),
-          news: readItems(newsList, ["title", "href", "dateIso", "dateLabel", "summary"]),
-          announcements: readItems(announcementList, ["title", "href", "summary"]),
+          services: readItems(serviceList, ["label", "href", "imageSrc", "imageAlt"]).filter(function (i) { return i.active; }),
+          heroSlides: readItems(heroSlideList, ["title", "subtitle", "href", "videoSrc", "videoLabel"]).filter(function (i) { return i.active; }),
+          news: readItems(newsList, ["title", "href", "dateIso", "dateLabel", "summary"]).filter(function (i) { return i.active; }),
+          announcements: readItems(announcementList, ["title", "href", "summary"]).filter(function (i) { return i.active; }),
         },
       });
       fillHomeContent(data.content || {});
